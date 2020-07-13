@@ -1,0 +1,21 @@
+{
+  "name": "dingma",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vdl",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "\\"
+  },
+  "description": "vdl is a project file",
+  "dependencies": {
+    "@vant/weapp": "^1.0.1",
+    "miniprogram-sm-crypto": "^0.1.0",
+    "vant-weapp": "^0.5.27"
+  },
+  "devDependencies": {}
+}

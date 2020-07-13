@@ -1,0 +1,5 @@
+<view class="article-content">
+  <parser html="{{banner.content}}"/>
+</view>
+<van-toast id="load" />
+

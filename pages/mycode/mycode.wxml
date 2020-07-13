@@ -1,0 +1,16 @@
+<!--pages/mycode/mycode.wxml-->
+<view class="imgbox">
+ <image lazy-load="{{true}}" bindload="eventhandle" mode="scaleToFill" src="{{mycode}}"></image>
+ <view class="btn-list" wx:if="{{imgoff}}">
+      <van-button type="primary" color='#EE7C35' custom-style="width:200rpx;margin-right:14rpx;" bindtap="downloadfile">保存</van-button>
+      <van-button plain type="info" color='#EE7C35' custom-style="width:200rpx;margin-right:14rpx;" open-type="share">分享</van-button>
+ </view>
+</view>
+<view class="zz" wx:if="{{!imgoff}}">
+<view class="bbb">
+<van-loading type="spinner" color="#1989fa" vertical>图片加载中...</van-loading>
+</view>
+</view>
+
+<van-toast id="load" />
+<van-toast id="van-toast" />

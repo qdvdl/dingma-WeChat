@@ -1,0 +1,41 @@
+<view class="hb"></view>
+<view class="userinfolist">
+    <view class="operation-list">
+      <view class="item" bindtap="setIimg">头像
+         <view class="textimg img">
+           <image lazy-load="{{true}}" src="{{useinfo.headimg}}"/>
+         </view>  
+        <view class="foo-icon"><van-icon size="12" color="#999999" name="arrow" /></view>
+      </view>
+      <view class="item" bindtap="setnickname">昵称
+        <view class="textimg">{{useinfo.nickname}}</view>  
+        <view class="foo-icon"><van-icon size="12" color="#999999" name="arrow" /></view>
+      </view>
+    </view>
+</view>
+
+<!-- 弹窗 -->
+<van-dialog
+  use-slot
+  title="编辑昵称"
+  show="{{ setshow }}"
+  show-cancel-button
+  bind:close="onClose"
+  confirm-button-color="#EE7C35"
+  cancel-button-color="#999999"
+  bind:confirm="submit"
+>
+  <view class="inputbox">
+    <van-field
+      maxlength="15"
+      custom-style="background:rgba(247,247,247,1);border-radius:6px;"
+      value="{{ nickname }}"
+      placeholder="请输入用户名"
+      border="{{ false }}"
+      bind:change="onChange"/>
+  </view>  
+</van-dialog>
+
+<van-toast id="load" />
+<van-toast id="van-toast" />
+

@@ -1,0 +1,139 @@
+<!--index.wxml-->
+<!-- 搜索区域 -->
+<view class="Searchh"></view>
+<view  class="Search" bindtap="searchBtn" data-path="choice/choice">
+  <view class="seize">请输入车辆品牌信息</view>
+  <view class="icon"><van-icon  name="search" color="#747474" custom-style="font-weight:bold" /></view> 
+</view>
+
+<!-- banner -->
+<swiper class="Banner" circular="{{circular}}" indicator-dots="{{indicatorDots}}" indicator-color="#c7ccd3" indicator-active-color="#FFFFFF"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <swiper-item wx:for="{{banner}}" wx:for-item="item" wx:key="id" bindtap="bannerContent" data-id="{{item.id}}">
+      <image lazy-load="{{true}}" mode="widthFix" src="{{http}}{{item.bannerurl}}"></image>
+    </swiper-item>
+</swiper>
+<!-- 质量任务 -->
+<view class="Bicon">
+  <view><image lazy-load="{{true}}" src="../../resources/img/gou.png"></image> 方案灵活</view>
+  <view><image lazy-load="{{true}}" src="../../resources/img/gou.png"></image> 品牌车源</view>
+  <view><image lazy-load="{{true}}" src="../../resources/img/gou.png"></image> 快速审批</view>
+  <view><image lazy-load="{{true}}" src="../../resources/img/gou.png"></image> 性价比高</view>
+</view>
+<!-- 性价比 -->
+<view class="text-tab text-tab1">
+   <view class="text text1" bindtap="goVehicle">超</view>
+   <view class="text text2" bindtap="goVehicle">更</view>
+   <view class="text text3" bindtap="goVehicle">高</view>
+</view>
+<view class="text-tab text-tab2">
+  <view class="tab" bindtap="goVehicle">
+    <text>超低首付</text>
+  </view>
+  <view class="tab" bindtap="goVehicle">
+    <text>更低月供</text>
+  </view>
+  <view class="tab" bindtap="goVehicle">
+    <text>高性价比</text>
+  </view>
+</view>
+
+<!-- 人气车型 -->
+<view class="main">
+    <view class="header-title">
+      <view class="title">人气车型<text>限时抢-轻松开好车</text></view>
+    </view>
+    <view class="bg"><image lazy-load="{{true}}" src="../../resources/img/1.png"></image></view>
+    <view class="main-list" wx:if="{{vehicle_home.length>0}}">
+       <view class="list-item" wx:for="{{vehicle_head}}" wx:for-item="item" wx:key="id" bindtap="details" data-id="{{item.id}}">
+            <image lazy-load="{{true}}" src="{{http}}{{item.imgsrc}}"></image>
+            <view class="name">{{item.b_name}}</view>
+            <view class="model">{{item.version}}</view>
+            <view class="price">
+              首付<text class="s">{{item.fprices}}</text><text class="t">月供{{item.mprices}}</text>
+            </view>
+       </view>
+    </view>
+    <view class="data-null"  style="margin-top:100rpx;" wx:if="{{vehicle_head.length==0}}">
+      <view class="img"><image src="{{zanwu}}"></image></view>
+      暂无人气车型
+    </view>
+</view>
+<!-- 公告 -->
+<view class="notice-bar-box">
+  <view class="icon"><van-icon name="volume-o" custom-style="font-weight:bold" /></view>
+  <view class="swiper">
+    <swiper indicator-dots="{{false}}" vertical="{{true}}" circular="{{circular}}"
+        autoplay="{{autoplay}}" interval="{{2500}}" duration="{{duration}}">
+        <swiper-item wx:for="{{info}}" wx:for-item="item" wx:key="index">
+          <view class="imgtext">
+            <view class="header"><image lazy-load="{{true}}" src="{{http}}{{item.imgurl}}"></image></view>
+            <view class="text">{{item.tel}}刚刚成交了{{item.brand_name}}</view>
+          </view>
+        </swiper-item>
+      </swiper>
+  </view>
+
+</view>
+
+<!-- 推荐车型 -->
+<view class="main">
+    <view class="header-title">
+      <view class="title">推荐车型</view>
+      <view class="More" bindtap="moreChoice">更多<van-icon size="10" name="arrow" /></view>
+    </view>
+    <view class="bg bg2"><image lazy-load="{{true}}" src="../../resources/img/2.png"></image></view>
+    <view class="main-list" wx:if="{{vehicle_home.length>0}}">
+       <view class="list-item" wx:for="{{vehicle_home}}" wx:for-item="item" wx:key="id" bindtap="details" data-id="{{item.id}}">
+             <image lazy-load="{{true}}" src="{{http}}{{item.imgsrc}}"></image>
+            <view class="name">{{item.b_name}}</view>
+            <view class="model">{{item.version}}</view>
+            <view class="price">
+              首付<text class="s">{{item.fprice}}</text><text class="t">月供{{item.mprice}}</text>
+            </view>
+       </view>
+    </view>
+    <view class="data-null"  style="margin-top:100rpx;" wx:if="{{vehicle_home.length==0}}">
+      <view class="img"><image src="{{zanwu}}"></image></view>
+      暂无推荐车型
+    </view>
+</view>
+
+<view  class="navh"></view>
+<!-- 导航 -->
+<van-tabbar active="index/index" bind:change="tonavlist"  inactive-color="#666666" active-color="#EE7C35" z-index="{{3}}" >
+  <van-tabbar-item name="index/index">
+    <image slot="icon" src="{{navIcon.home}}"  mode="home" style="width: 33rpx; height: 36rpx;"/>
+    <image slot="icon-active" src="{{navIcon.homeActive}}" mode="home" style="width: 33rpx; height: 36rpx;"/>
+    <text>首页</text>
+  </van-tabbar-item>
+  <van-tabbar-item name="choice/choice">
+    <image slot="icon" src="{{navIcon.ss}}" mode="ss" style="width: 35rpx; height: 38rpx;"/>
+    <image slot="icon-active" src="{{navIcon.ssActive}}" mode="ss" style="width: 35rpx; height: 38rpx;"/>
+     <text>选车</text>
+  </van-tabbar-item>
+  <van-tabbar-item name="user/user">
+    <image slot="icon" src="{{navIcon.my}}"  mode="my" style="width: 37rpx; height: 36rpx;"/>
+    <image slot="icon-active" src="{{navIcon.myActive}}" mode="my" style="width: 37rpx; height: 36rpx;"/>
+    <text>我的</text>
+  </van-tabbar-item>
+</van-tabbar>
+
+<!-- <view class="box">
+    <button class='btn' bindgetuserinfo="loginClick" open-type="getUserInfo"></button>
+  </view>
+-->
+
+<!-- 绑定用户 -->
+<van-popup z-index="{{11}}" position="bottom" show="{{isTel}}" >
+  <view class="authPhoneNumber">
+   <view class="msgText">请绑定手机号登录</view>
+   <van-button custom-style="width:200rpx;margin-right:14rpx;" plain type="info"  bindtap="notel">暂不绑定</van-button> 
+   <van-button custom-style="width:200rpx;" plain type="primary" bindtap="userLogin" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">立即绑定</van-button> 
+  </view>
+</van-popup>
+
+<button wx:if="{{isauth}}" class="authorization" bindgetuserinfo="loginClick" open-type="getUserInfo" style='width:750rpx'>
+
+</button>
+<van-toast id="load" />

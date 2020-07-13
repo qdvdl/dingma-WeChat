@@ -1,0 +1,41 @@
+<!--pages/mycar/mycar.wxml-->
+
+<view class="data-null" wx:if="{{order.length==0}}" style="margin-top:200rpx;">
+  <view class="img"><image src="{{zanwu}}"></image></view>
+  暂无车辆
+</view>
+
+<view class="main" wx:if="{{order.length>0}}">
+ <view class="bg">
+  <image lazy-load="{{true}}" src="{{bg}}"></image>
+   <view class="text-price">
+    <view class="text">贷款总额</view>
+    <view class="price"><text>￥</text>{{contmoney}} </view>
+   </view>
+ </view>
+
+  <view class="infomain"  wx:for="{{order}}" wx:for-item="item" wx:key="id">
+      <view class="info-text">
+        <view class="name">
+          <text>{{item.b_name}}</text>{{item.version}}
+          <view class="state" wx:if="{{item.deal_state=='1'}}">已通过</view>
+          <view class="state" wx:if="{{item.deal_state=='2'}}">还款中</view>
+          <view class="state" wx:if="{{item.deal_state=='3'}}">已完成</view>
+        </view>
+        <view class="price">
+        成交金额<text class="s">{{item.deal_price}}</text><text class="t">元</text>
+        </view>
+        <view class="price1">
+        首付金额<text>{{item.firstMoney}}元</text>·月供<text>{{item.payment}}元</text>
+        </view>
+        <view class="time">
+          <view class="t">成交时间：{{item.deal_time}}</view>
+          <view class="n">期数{{item.periods}}月</view>
+        </view>
+      </view>
+  </view>
+
+</view>
+
+
+<van-toast id="load" />

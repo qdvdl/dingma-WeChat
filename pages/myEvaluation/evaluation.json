@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-divider": "@vant/weapp/divider",
+    "van-field": "@vant/weapp/field",
+    "van-notify": "@vant/weapp/notify"
+  },
+  "navigationBarTitleText": "我的评价"
+}

@@ -1,0 +1,143 @@
+<!-- banner -->
+<!-- <view class="data-null" style="margin-top:200rpx;">
+  <view class="img"><image src="{{zanwu}}"></image></view>
+  车辆数据已经删除
+</view> -->
+<scroll-view scroll-y="{{true}}" style="height:92vh;" >
+  <view class="banner-box">
+    <swiper indicator-dots="{{indicatorDots}}"
+      autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="banner" bindchange="eventhandle">
+        <swiper-item wx:for="{{details.banner}}" wx:for-item="item" wx:key="item">
+          <image mode="widthFix" lazy-load="{{true}}" src="{{http+item}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="number-text">{{bindex}}/{{details.banner.length}}</view>
+  </view>
+  <!-- 信息 -->
+  <view  class="info-text">
+    <view class="name"><text>{{details.b_name}}</text>{{details.version}}</view> 
+    <view class="price">厂商指导价<text>{{details.price}}</text></view>
+    <view class="des"><text>赠</text>
+      <view>{{details.text}}</view>
+    </view>
+  </view>
+  <view class="hb"></view>
+  <!-- 详情 -->
+  <view class="title">购车方案</view>
+  <view class="content">
+    <view><parser html="{{details.planText}}"/></view>
+  </view>
+  <view class="hb"></view>
+  <!-- 详情 -->
+  <view class="title">车辆详情</view>
+  <view class="content">
+    <view><parser html="{{details.sugText}}"/></view>
+  </view>
+  <!-- 评价 -->
+  
+  <view wx:if="{{details.evaluation}}">
+    <view class="hb"></view>
+    <view class="title" bindtap="evaluation" data-id="{{details.id}}">购车评价<text>（{{details.evaluation_count}}）</text>
+      <view class="arrow"><van-icon name="arrow" /></view>
+    </view>
+    <!-- 评论列表 -->
+    <view class="evaluation">
+        <view class="user-info">
+            <view class="uinfoimg">
+              <image lazy-load="{{true}}" src="{{details.evaluation.headimg}}"/>
+            </view>
+            <view class="uinfo">
+              <view class="name">{{details.evaluation.nickname}}</view>
+              <view><van-rate value="{{details.evaluation.star}}" readonly size="14" color="#FF4D30"/></view>
+              <view class="time">{{details.evaluation.datetime}}</view>
+            </view>
+        </view>
+        <view class="evaluation-text">
+          {{details.evaluation.text}}
+        </view>
+        <view class="imglist" wx:if="{{details.evaluation.img!=''}}">
+          <view class="img" wx:for="{{details.evaluation.img}}" wx:for-itme="item" wx:key="item" data-index="{{index}}" bindtap="imgsrc">
+            <image lazy-load="{{true}}" src="{{http+item}}"/>
+          </view>
+        </view>
+    </view>
+   </view>
+  <!-- 购买须知 -->
+  <view class="hb"></view>
+  <view class="title">购买须知</view>
+  <view class="content">
+    <view><parser html="{{details.siteinfo.gmxztext}}"/></view>
+    
+  </view>
+</scroll-view >
+<!-- 底部导航 -->
+<view class="bottomh"></view>
+<view class="goods-action">
+  <view class="goods-icon goods-icon-border">
+    <button class="goods-btn" open-type="share"></button>
+    <van-icon name="{{icon.zhuanfa}}" size="34rpx" custom-style="margin-bottom:10rpx;" />
+    <view class="text">转发好友</view>
+  </view>
+  <view class="goods-icon" bindtap="wenwen">
+    <van-icon name="{{icon.wen}}" size="34rpx" />
+    <view class="text">问问</view>
+  </view>
+  <view class="goods-btn" bindtap="askingPrice" data-type="show">询底价</view>
+</view>
+<!-- 询问价格 -->
+<van-popup show="{{ askingshow }}" close-on-click-overlay="{{false}}" closeable="{{true}}" position="bottom" bind:close="onClose">
+  <view class="subbox">
+       <van-field
+        value="{{postdata.client_name}}"
+        label="姓名"
+        size="100rpx"
+        placeholder="请输入您的姓名"
+        border="{{ true }}"
+        input-align="right"
+        maxlength="10"
+        data-field="client_name"
+        bind:change="onChange"
+      />
+      <van-field
+        size="100rpx"
+        value="{{ postdata.client_tel}}"
+        label="电话"
+        input-align="right"
+        data-field="client_tel"
+        maxlength="11"
+        placeholder="请输入电话号码"
+        border="{{ true }}"
+        bind:change="onChange"
+      />
+      <van-field
+        size="100rpx"
+        value="{{postdata.budget}}"
+        label="购车预算"
+        maxlength="9"
+        input-align="right"
+        data-field="budget"
+        placeholder="请输入您的购车预算/万"
+        border="{{ true }}"
+        bind:change="onChange"
+      />
+  </view>
+  <view class="btn">
+    <van-button color="#EE7C35" bindtap="askingPrice" data-type="submit">提交</van-button>
+  </view>
+</van-popup>
+<!-- 成功弹窗 -->
+<van-popup show="{{ okShow }}" closeable="{{true}}" close-on-click-overlay="{{false}}" position="bottom" bind:close="onClose">
+  <view class="success">
+      <van-icon name="passed" color="#EE7C35" size="140rpx" custom-style="margin-bottom:34rpx;" />
+      <view class="msg">提交成功！</view>
+      <view class="text">请耐心等候，平台会在24小时内和您取得联系！</view>
+  </view>
+</van-popup>
+<!-- 加载页面 -->
+<van-toast id="load" />
+<van-notify id="van-notify" />
+
+
+
+
+

@@ -1,0 +1,70 @@
+<!--pages/user/user.wxml-->
+
+<view class="main">
+  <view class="bg">
+    <image lazy-load="{{true}}" src="{{iconList.bg}}"/>
+  </view>
+  <!-- 用户信息 -->
+  <view class="user-info">
+    <view class="seticon" bindtap="setinfo">
+      <van-icon name="setting-o" size="30" color="#ffffff" />
+    </view>
+    <view class="headerimg">
+     <image lazy-load="{{true}}" src="{{userinfo.headimg}}"/>
+    </view>
+    <view class="nickname">{{userinfo.nickname}}</view>
+    <view class="usertel">{{userinfo.tel}}</view>
+  </view>
+  <!-- 操作列表-->
+  <view class="operation">
+    <view class="operation-list">
+      <view class="item" bindtap="itemNav" data-type="mycode/mycode"><image lazy-load="{{true}}"  src="{{iconList.icon1}}"/>我的二维码
+        <view class="foo-icon"><van-icon size="12" color="#999999" name="arrow" /></view>
+      </view>
+      <view class="item" bindtap="itemNav" data-type="myEvaluation/evaluation"><image lazy-load="{{true}}" src="{{iconList.icon2}}"/>我的评价<view class="foo-icon"><van-icon size="12" color="#999999" name="arrow" /></view>
+      </view>
+      <view class="item" bindtap="itemNav" data-type="reward/reward"><image lazy-load="{{true}}" src="{{iconList.icon3}}"/>推荐奖励<view class="foo-icon"><van-icon size="12" color="#999999" name="arrow" /></view>
+      </view>
+      <view class="item" bindtap="itemNav" data-type="mycar/mycar"><image lazy-load="{{true}}" src="{{iconList.icon4}}"/>我的车辆<view class="foo-icon"><van-icon size="12" color="#999999" name="arrow" /></view></view>
+      <view class="item" bindtap="itemNav" data-type="article/index"><image lazy-load="{{true}}" src="{{iconList.icon5}}"/>关于我们<view class="foo-icon"><van-icon size="12" color="#999999" name="arrow" /></view></view>
+      <view class="item noborder" bindtap="itemNav" data-type="tel" ><image lazy-load="{{true}}" src="{{iconList.icon6}}"/>联系客服<view class="foo-icon"><van-icon size="12" color="#999999" name="arrow" /></view></view>
+    </view>
+  </view>
+
+
+</view> 
+
+
+<!-- 导航 -->
+<van-tabbar active="user/user" bind:change="tonavlist" inactive-color="#666666" active-color="#EE7C35" z-index="{{3}}" >
+  <van-tabbar-item name="index/index">
+    <image slot="icon" src="{{navIcon.home}}"  mode="home" style="width: 33rpx; height: 36rpx;"/>
+    <image slot="icon-active" src="{{navIcon.homeActive}}" mode="home" style="width: 33rpx; height: 36rpx;"/>
+    <text>首页</text>
+  </van-tabbar-item>
+  <van-tabbar-item name="choice/choice">
+    <image slot="icon" src="{{navIcon.ss}}" mode="ss" style="width: 35rpx; height: 38rpx;"/>
+    <image slot="icon-active" src="{{navIcon.ssActive}}" mode="ss" style="width: 35rpx; height: 38rpx;"/>
+     <text>选车</text>
+  </van-tabbar-item>
+  <van-tabbar-item name="user/user">
+    <image slot="icon" src="{{navIcon.my}}"  mode="my" style="width: 37rpx; height: 36rpx;"/>
+    <image slot="icon-active" src="{{navIcon.myActive}}" mode="my" style="width: 37rpx; height: 36rpx;"/>
+    <text class="navtext">我的</text>
+  </van-tabbar-item>
+</van-tabbar>
+
+
+
+
+
+<!-- <van-image
+show-loading
+bindtap="resetimg"
+  width="100"
+  height="100"
+  round
+  src="{{src}}"
+  /> -->
+<!-- 加载 -->
+<van-toast id="load" />

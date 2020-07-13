@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/details/details",
+    "pages/myEvaluation/evaluation",
+   "pages/mycode/mycode",
+    "pages/banner/index",
+    "pages/article/index",
+    "pages/reward/reward",
+    "pages/user/user",
+    "pages/mycar/mycar",
+    "pages/evaluation/evaluation",
+    "pages/userinfo/userinfo",
+    "pages/test/test",
+    "pages/choice/choice",
+    "pages/crop/crop"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "天府享优车",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button",
+    "van-rate": "@vant/weapp/rate",
+    "van-popup": "@vant/weapp/popup",
+    "van-toast": "@vant/weapp/toast",
+    "van-notice-bar": "@vant/weapp/notice-bar",
+    "van-action-sheet": "@vant/weapp/action-sheet",
+    "van-dialog": "@vant/weapp/dialog",
+    "van-image": "@vant/weapp/image",
+    "van-icon": "@vant/weapp/icon",
+    "van-tabbar": "@vant/weapp/tabbar",
+    "van-tabbar-item": "@vant/weapp/tabbar-item"
+  }
+}

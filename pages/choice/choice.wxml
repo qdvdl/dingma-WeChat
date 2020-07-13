@@ -1,0 +1,95 @@
+<!--pages/choice/choice.wxml-->
+<!-- <text>pages/choice/choice.wxml</text> -->
+<view class="search">
+  <van-search value="{{ searchValue }}"
+  use-action-slot
+  shape="round"
+  bind:change="onSearchChange"
+  bind:clear="onClear"
+  placeholder="请输入车辆型号信息">
+  <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
+</view>
+<view class="fgx"></view>
+<!-- 筛选 -->
+<view class="screening">
+  <view class="fiter {{fiter_type== 'fiter1'? 'fiter1':''}} {{fiterOff ? 'active1':'active2'}}" bindtap="fiter" data-type="fiter1">首付</view>
+  <view class="fiter {{fiter_type== 'fiter2'? 'fiter2':''}} {{fiterOff ? 'active1':'active2'}}" bindtap="fiter" data-type="fiter2">月供</view>
+  <view class="fiter2" bindtap="fiter" data-type="brand">{{sxbrand}}
+    <image src="{{sxicon}}"/>
+  </view>
+</view>
+<view class="data-null" wx:if="{{dataList.length==0}}" style="margin-top:200rpx;">
+  <view class="img"><image src="{{zanwu}}"></image></view>
+  暂无车辆信息
+</view>
+<view wx:if="{{dataList.length>0}}">
+
+
+<!-- 列表 -->
+<view class="main">
+    <scroll-view scroll-y="{{true}}" style="height:{{h}};">
+      <view class="main-list">
+        <view class="list-item" wx:for="{{dataList}}" wx:for-item="item" wx:key="id" bindtap="details" data-id="{{item.id}}">
+            <image lazy-load="{{true}}" src="{{http}}{{item.imgsrc}}"></image>
+            <view class="name">{{item.b_name}}</view>
+            <view class="model">{{item.version}}</view>
+            <view class="price">
+              首付<text class="s">{{item.fprice}}</text><text class="t">月供{{item.mprice}}</text>
+            </view>
+        </view>
+      </view>
+      <!-- 加载更多 -->
+      <view class="more-btn">
+          <view class="more" wx:if="{{parameter.show=='more'}}" bindtap="moreGetData">加载更多 </view>
+          <text wx:if="{{parameter.show=='hide'}}">没有更多了</text>
+      </view>
+    </scroll-view >
+</view>
+</view>
+<!-- end列表 -->
+
+<!-- 筛选品牌弹窗 -->
+<van-popup show="{{ fiterShow }}" closeable="{{true}}" position="right" bind:close="fiterHide">
+  <view class="fiter-list">
+    <view class="list-ppt">
+        <view class="title">选择品牌</view>
+        <scroll-view class="scroll-view_H" scroll-y="true" style="width: 100%;height:85vh;">
+          <van-grid column-num="2"  use-slot="{{true}}">
+              <van-grid-item icon="{{http}}{{item.imgurl}}" data-name="{{item.name}}" data-id="{{item.id}}"  bind:click="fiterList" wx:form-item="item" wx:for="{{brand}}" wx:key="id">
+                <view slot="text"><text class="{{fiterList==item.id?'selectStyle' :''}}">{{item.name}}</text></view>
+              </van-grid-item>
+          </van-grid>
+      </scroll-view>
+      <view class="info-btn"> 
+          <van-button bindtap="fiterClear" color="#7232dd">清空筛选</van-button>
+          <van-button bindtap="fiterHides" type="info">确认</van-button>
+       </view>
+    </view>
+  </view>  
+</van-popup>
+
+<!-- 底部导航 -->
+<van-tabbar active="choice/choice" bind:change="tonavlist" inactive-color="#666666" active-color="#EE7C35" z-index="{{3}}" >
+  <van-tabbar-item name="index/index">
+    <image slot="icon" src="{{navIcon.home}}"  mode="home" style="width: 33rpx; height: 36rpx;"/>
+    <image slot="icon-active" src="{{navIcon.homeActive}}" mode="home" style="width: 33rpx; height: 36rpx;"/>
+    <text>首页</text>
+  </van-tabbar-item>
+  <van-tabbar-item name="choice/choice">
+    <image slot="icon" src="{{navIcon.ss}}" mode="ss" style="width: 35rpx; height: 38rpx;"/>
+    <image slot="icon-active" src="{{navIcon.ssActive}}" mode="ss" style="width: 35rpx; height: 38rpx;"/>
+     <text>选车</text>
+  </van-tabbar-item>
+  <van-tabbar-item name="user/user">
+    <image slot="icon" src="{{navIcon.my}}"  mode="my" style="width: 37rpx; height: 36rpx;"/>
+    <image slot="icon-active" src="{{navIcon.myActive}}" mode="my" style="width: 37rpx; height: 36rpx;"/>
+    <text class="navtext">我的</text>
+  </van-tabbar-item>
+</van-tabbar>
+
+<!-- 加载 -->
+<van-toast id="load" />
+
+
+

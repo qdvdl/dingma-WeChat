@@ -1,0 +1,219 @@
+/* 车辆信息 */
+.info-text{
+  padding: 30rpx;
+}
+.info-text .name{
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  position: relative;
+  margin-bottom: 19rpx;
+}
+.info-text .name text{
+  margin-right: 24rpx;
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+}
+.state{
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(238,124,53,1);
+}
+.info-text .price{
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  margin-bottom: 20rpx;
+}
+.info-text text.s{
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(255,77,48,1);
+  margin-left: 50rpx;
+}
+.info-text text.t{
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(255,77,48,1);
+}
+.info-text .price1{
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  margin-bottom: 38rpx;
+}
+.info-text .price1 text{
+  color:rgba(255,77,48,1);
+}
+.time{
+  display: flex;
+  justify-content: space-between;
+  height: 95rpx;
+  line-height: 95rpx;
+  border-bottom:1px solid #EEEEEE; 
+  border-top:1px solid #EEEEEE; 
+  font-size:24rpx;
+  font-weight:400;
+  font-family:PingFang SC;
+}
+.time .t{
+color:rgba(153,153,153,1);
+}
+.time .n{
+  color:rgba(51,51,51,1);
+}
+
+/* 评价内容 */
+.evaluation-text{
+  width: 690rpx;
+  margin: 0 auto;
+}
+.rate-info{
+  padding-top: 45rpx;
+  margin-bottom: 37rpx;
+  overflow: hidden;
+}
+.rate-info .rate{
+  float:left;
+}
+.evaluation-text .text{
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height: 40rpx;
+  margin-bottom: 33rpx;
+}
+.rate-info text{
+  float: left;
+  margin-right: 33rpx;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+}
+.imglist{
+ display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 20rpx;
+}
+.imglist .img{
+  width: 214rpx;
+  height: 214rpx;
+  /* overflow: hidden; */
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+.imglist .img:nth-of-type(3n){
+  margin-right: 0rpx;
+}
+.imglist .img image{
+  width: 100%;
+  height: 100%;
+}
+/* 回复 */
+.reply{
+  padding: 30rpx 30rpx 40rpx 30rpx;
+  background: #F7F7F7;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:#666666;
+  line-height:36rpx;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.reply text{
+  color: #1A30DC;
+}
+/* end评价内容 */
+
+/* 去评价 */
+.evaluation-input{
+  width: 690rpx;
+  margin: 0 auto;
+}
+.evaluation-input .rate-infos{
+  border-bottom: 1rpx solid #EEEEEE;
+  height: 100rpx;
+  line-height: 73rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.evaluation-input .textarea{
+  background: #F7F7F7;
+  position: relative;
+  margin-bottom: 36rpx;
+}
+.evaluation-input .textarea .numtext{
+  position: absolute;
+  right: 30rpx;
+  bottom:30rpx;
+  z-index: 2;
+  font-size:24rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(102,102,102,1);
+}
+.addImg{
+  border-top: 1px solid #EEEEEE;
+  padding-top: 50rpx;
+}
+.addimgbtn{
+  background: #F7F7F7;
+  position: relative;
+}
+.imglist .img.addimgbtn image{
+  width: 64rpx;
+  height: 56rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+}
+.imglist .img .imgdel{
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  right: -18rpx;
+  top: -18rpx;
+  background: #a4a4a4;
+  border-radius:50%; 
+  color: #ffffff;
+  text-align: center;
+  line-height: 36rpx;
+}
+.btn{
+  text-align: center;
+  padding-bottom: 60rpx;
+  padding-top: 23rpx;
+}
+
+.swiper{
+  /* background: red; */
+  height: 100vh;
+  width: 100wh;
+}
+.textarea textarea{
+  height:130rpx;
+}
+.van-field__body--textarea{
+  height: 140rpx;
+}
+.e_text{
+  word-wrap: break-word;
+  word-break: break-all;
+}

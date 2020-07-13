@@ -1,0 +1,48 @@
+/* pages/test/test.wxss */
+.srcimg{
+  position: absolute;
+  top:10rpx;
+  width: 100%;
+  font-size: 33rpx;
+  z-index: 10;
+  color:#ffffff;
+  text-align: center;
+  /* background: #ffffff; */
+  padding-top: 15rpx;
+}
+
+.btn-list{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  background: #ffffff;
+  text-align: center;
+  padding-top: 15rpx;
+  width: 100%;
+}
+.btn-list button{
+  margin-bottom: 15rpx;
+  margin-left: 10rpx;
+  width: auto;
+
+}
+.sheet-list view{
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
+.sheet-list view.item{
+  border-bottom: 2rpx solid #ebedf0;
+}
+.imgsrc{
+  padding: 50rpx;
+  width: 200rpx;
+  height: 200rpx;
+  margin: 0 auto;
+}
+.imgsrc image{
+  width: 100%;
+  height: 100%;
+
+}

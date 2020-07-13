@@ -1,0 +1,95 @@
+<swiper class="swiper" vertical="{{true}}" wx:if="{{datalist.length>0}}">
+  <swiper-item wx:for="{{datalist}}" wx:for-item="item" wx:key="id">
+ <scroll-view scroll-y='{{true}}' style='height:100vh;'> 
+      <view class="info-text">
+        <view class="name">
+        <text>{{item.b_name}}</text>{{item.version}}
+          <view class="state" wx:if="{{item.deal_state=='1'}}">已通过</view>
+          <view class="state" wx:if="{{item.deal_state=='2'}}">还款中</view>
+          <view class="state" wx:if="{{item.deal_state=='3'}}">已完成</view>
+        </view>
+        <view class="price">
+        成交金额<text class="s">{{item.deal_price}}</text><text class="t">元</text>
+        </view>
+        <view class="price1">
+        首付金额<text>{{item.firstMoney}}元</text>·月供<text>{{item.payment}}元</text>
+        </view>
+        <view class="time">
+          <view class="t">成交时间：{{item.deal_time}}</view>
+          <view class="n">期数{{item.periods}}月</view>
+        </view>
+      </view>
+      <!-- 我的评价评价过 -->
+      <view class="evaluation-text-box" wx:if="{{item.estate==='1'}}">
+        <!-- 分割线条 -->
+        <van-divider contentPosition="center" custom-style="width:580rpx;margin:0 auto;font-family:PingFang SC;font-weight:bold;color:rgba(51,51,51,1);">我的评价</van-divider>
+
+        <view class="evaluation-text">
+          <view class="rate-info">
+            <text>星级打分</text>
+            <view class="rate"><van-rate value="{{item.star}}" readonly size="36rpx" color="#FF4D30" /></view>
+          </view>
+          <view class="text e_text">{{item.e_text}}</view>
+          <view class="imglist" wx:if="{{item.e_img}}">
+   <view class="img" wx:for="{{item.e_img}}" wx:for-item="imgs" wx:key="imgs" bindtap="sizeImg" data-imgs="{{item.e_img}}" data-index="{{index}}"><image lazy-load="{{true}}" src="{{http+imgs}}"/></view>
+          </view>
+          <view class="reply" wx:if="{{item.e_reply}}">
+            <text>客服回复：</text>{{item.e_reply}}
+          </view> 
+        </view>
+      </view>
+      <!-- 没评价过的 -->
+      <view class="evaluation-input-box" wx:else>
+        <view class="evaluation-input">
+          <view class="rate-infos">
+            <text>星级打分</text>
+            <view class="rate"><van-rate value="0" size="36rpx" color="#FF4D30" bind:change="fengshu" /></view>
+          </view>
+          <!-- 输入框 -->
+          <view class="textarea">
+          <van-field
+              custom-style="height:240rpx;background:#F7F7F7;border-radius:5px;"
+              maxlength="200"
+              value="{{ postdata.text }}"
+              type="textarea"
+              placeholder="谈谈你的想法吧，可以帮助更多想了解Ta的人哦"
+              border="{{false}}"
+              bind:change="etext"
+            />
+            <view class="numtext">限200字符</view>  
+          </view>
+          <!-- 添加图片 -->
+          <view class="addImg">
+            <view class="imglist">
+              <view class="img" wx:for="{{imglist}}" wx:for-item="img" wx:key="img" bindtap="sizeImg" data-imgs="{{imglist}}" data-index="{{index}}">
+                <image lazy-load="{{true}}" src="{{http+img}}"/>
+                <view class="imgdel" catchtap="delimg" data-index="{{img}}"><van-icon size="12" name="cross" /></view>
+              </view>
+              <view wx:if="{{imglist.length<6}}" class="img addimgbtn" bindtap="setIimg"><image lazy-load="{{true}}" src="{{addicon}}"/></view>
+               
+          </view>
+          </view> 
+          
+        <view class="btn">
+            <van-button color="#EE7C35" bindtap="sumbEvaluation" data-vehicle="{{item.vehicle_id}}" data-order="{{item.id}}">提交</van-button>
+        </view>
+        </view>  
+      </view>
+      </scroll-view> 
+  </swiper-item>
+</swiper>
+<!-- 暂无车辆信息 -->
+<view class="data-null" wx:if="{{datalist&&datalist.length==0}}" style="margin-top:200rpx;">
+  <view class="img"><image src="{{zanwu}}"></image></view>
+  暂无评价订单
+</view>
+<!-- 加载弹窗 -->
+<van-toast id="load" />
+<van-toast id="van-toast" />
+<van-notify id="van-notify" />
+
+
+
+
+
+

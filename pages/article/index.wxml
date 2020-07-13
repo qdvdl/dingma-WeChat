@@ -1,0 +1,4 @@
+<view class="article-content">
+  <parser html="{{siteinfo.gywmtext}}"/>
+</view>
+<van-toast id="load" />

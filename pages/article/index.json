@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "parser": "../../Parser/index"
+  },
+  "navigationBarTitleText": "关于我们"
+}

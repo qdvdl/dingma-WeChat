@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-field": "@vant/weapp/field",
+    "parser": "../../Parser/index",
+    "van-notify": "@vant/weapp/notify"
+  }
+}

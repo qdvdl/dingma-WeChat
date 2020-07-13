@@ -1,0 +1,109 @@
+/* pages/user/user.wxss */
+.main{
+  position: relative;
+  background: #f7f7f7;
+  height: 100vh;
+}
+/* 背景 */
+.bg{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 726rpx;
+  background:linear-gradient(0deg,rgba(7,220,255,1) 0%,rgba(92,98,250,1) 100%);
+  z-index: 1;
+}
+.bg image{
+  width:100%;
+  height:726rpx;
+}
+/* 用户信息 */
+.user-info{
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  height: 374rpx;
+  padding-top: 26rpx;
+  margin-bottom: 40rpx;
+  /* background: goldenrod; */
+}
+.user-info .headerimg{
+  width:188rpx;
+  height:188rpx;
+  border:8rpx solid rgba(255,255,255,.2);
+  border-radius:50%;
+  margin: 0 auto 20rpx;
+}
+.user-info image{
+  width:160rpx;
+  height:160rpx;
+  background:rgba(255,255,255,1);
+  border-radius:50%;
+  position: relative;
+  top: 14rpx;
+}
+.user-info .nickname{
+  font-size:36rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(255,255,255,1);
+  margin-bottom: 20rpx;
+}
+.usertel{
+  width:240rpx;
+  height:60rpx;
+  background:rgba(0,0,0,0.2);
+  border-radius:30rpx;
+  line-height: 60rpx;
+  color:rgba(255,255,255,1);
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* 设置按钮 */
+.seticon{
+  position: absolute;
+  right: 30rpx;
+  top: 44rpx;
+}
+.operation{
+  background:#ffffff;
+  position: relative;
+  z-index: 2;
+  width: 690rpx;
+  margin: 0 auto;
+  border-radius:10px;
+}
+.operation-list{
+  padding: 0 20rpx 0 29rpx;
+}
+.operation-list view.item{
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1px solid #EEEEEE;
+  position: relative;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+}
+.operation-list view.noborder{
+  border:none;
+}
+.operation-list view.item image{
+  width: 34rpx;
+  height: 34rpx;
+  position: relative;
+  top: 6rpx;
+  margin-right: 23rpx;
+}
+.foo-icon{
+  position: absolute;
+  right: 0;
+  top: 0;
+}

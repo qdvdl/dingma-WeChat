@@ -1,0 +1,59 @@
+<view class="topbg">
+  <view class='nav' style="height:{{customBar}}rpx">
+    <view class='con' style="height:{{customBar}}px;padding-top:{{statusBar}}rpx;">
+      <view class="backBtn" bindtap="goBack" >
+        <van-icon color="#090204" name="arrow-left" />
+      </view>
+      <view class="title" style="top:{{statusBar}}rpx">我的奖励</view>
+    </view>
+  </view>
+   <view class="header">
+     <image lazy-load="{{true}}" src="{{data.headimg}}"/>
+   </view>
+   <view class="nickname"><text>{{data.nickname}}</text></view>
+   <view class="myreward"><image lazy-load="{{true}}" src="{{rewardimg}}"></image><view>我的礼品</view></view>
+</view>
+<!-- 领取列表 -->
+
+<view class="data-null" wx:if="{{data.reward.length==0}}" style="margin-top:100rpx;">
+  <view class="img"><image src="{{zanwu}}"></image></view>
+  暂无推荐奖励
+</view>
+
+
+<!-- <view class="rewardlist">
+  <view class="list">
+      <view class="image" bindtap="imgsrSize" data-img="">
+        <image lazy-load="{{true}}" src="http://dingma.sctshd.com/upload/reward/2020-02-21/20200221154654_.jpeg"></image>
+      </view>
+      <view class="text">
+        <view class="name">safdlsjsasasdfjldldasds啥地方就啥都发啥地方了啥地方啥地方就啥的</view>
+        <view class="price">价值{{item.price}}元</view>
+      </view>
+      <view class="lingtext" >未领取</view>
+    
+  </view>
+  
+</view> -->
+
+<view wx:if="{{data.reward.length>0}}">
+<view class="rewardlist">
+  <view class="list" wx:for="{{data.reward}}" wx:for-item="item" wx:key="id">
+      <view class="image" bindtap="imgsrSize" data-img="{{http+item.imgurl}}">
+        <image lazy-load="{{true}}" src="{{http+item.imgurl}}"></image>
+      </view>
+      <view class="text">
+        <view class="name">{{item.name}}</view>
+        <view class="price">价值{{item.price}}元</view>
+      </view>
+      <view class="lingtext" wx:if="{{item.receive=='2'}}">未领取</view>
+      <view class="lingtext active" wx:if="{{item.receive=='1'}}">已领取</view>
+  </view>
+  
+</view>
+<!-- 领取方式 -->
+<view class="ltitle">领取方式</view>
+<view class="des">礼品的领取方式为线下领取</view>
+</view>
+<van-toast id="load" />
+

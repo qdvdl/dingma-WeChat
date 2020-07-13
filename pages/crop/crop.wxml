@@ -1,0 +1,43 @@
+<!--pages/test/test.wxml-->
+<image-cropper id="image-cropper" quality="{{0.5}}" limit_move="{{true}}" disable_height="{{true}}" disable_width="{{true}}" disable_rotate="{{true}}" scale="{{scale}}" angle="{{angle}}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" upload="{{false}}" bindload="cropperload" bindimageload="loadimage"></image-cropper>
+<view class="srcimg">选择文件裁剪后上传</view>
+<view class="btn-list">
+  <van-button custom-style="width:120rpx;" round plain type="default" bindtap="setimg" data-type="angle">旋转</van-button>
+  <van-button custom-style="width:120rpx;" round plain type="default" bindtap="setimg" data-type="scale" data-sets="fd">放大</van-button>
+  <van-button custom-style="width:120rpx;" round plain type="default" bindtap="setimg" data-type="scale" data-sets="sx">缩小</van-button>
+  <van-button custom-style="width:120rpx;" round plain bindtap="cropperImg" type="warning">裁剪</van-button>
+  <van-button custom-style="width:200rpx;" bindtap="shofiel" plain round type="info">选择文件</van-button>
+</view>
+
+<!-- 选择按钮显示 -->
+<van-action-sheet
+  round="{{false}}"
+  cancel-text="取消"
+  show="{{ offsheet }}"
+  bind:cancel="oncancel"
+>
+<view class="sheet-list">
+  <view class="item" bindtap="addfile" data-type="album">相册</view>
+  <view bindtap="addfile" data-type="camera">拍照</view>
+</view>   
+</van-action-sheet>
+
+
+<van-dialog
+  use-slot
+  cancel-button-color="#9c9c9c"
+  confirmButtonText="确认上传"
+  cancelButtonText="重新裁剪"
+  show="{{pshowimg}}"
+  bind:confirm="pimgConfirm"
+  show-cancel-button
+ > 
+ <view class="imgsrc">
+   <image src="{{psrc}}" />
+ </view>
+
+</van-dialog>
+
+
+<van-toast id="load" />
+

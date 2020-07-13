@@ -1,0 +1,5 @@
+.article-content{
+  border-top: 1px solid #eeeeee;
+  margin: 0 auto;
+  padding: 30rpx 30rpx 0 30rpx;
+}
